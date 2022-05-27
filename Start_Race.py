@@ -5,8 +5,8 @@ import random
 from playsound import playsound
 
 
-print("Searching for FairStartSystem...")
-port=sys.argv[1:] # Read the port entered in the command line. The format will vary between Windows/Mac/Linux
+print("Searching for FairStartSystem on {}...".format(sys.argv[1]))
+port=sys.argv[1] # Read the port entered in the command line. The format will vary between Windows/Mac/Linux
 bluetooth=serial.Serial(port, 15200) # Initiate bluetooth connection with 15200 baud rate
 print("Connected!")
 

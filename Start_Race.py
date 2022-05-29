@@ -11,14 +11,15 @@ bluetooth=serial.Serial(port, 15200) # Initiate bluetooth connection with 15200 
 print("Connected!")
 
 random_num = random.random() * 3.5
-print("This countdown: ", random_num) # Show the current randomized countdown
+print("This countdown delay: {} seconds".format(round(random_num, 2))) # Show the current randomized countdown
 bluetooth.flushInput() # Pulse check bluetooth
 
+bluetooth.write(bytes("2",'utf-8')) # Send the arduino a command to show countdown LEDs
 playsound('./wait.mp3') # Play the initial three start tones
-time.sleep(random_num) # Wait a short random amount of time
+time.sleep(random_num) # Wait a short random amount of time (keep 'em guessing)
 
 bluetooth.write(bytes("1",'utf-8')) # Send the arduino a command to open the gate
-time.sleep(0.1) # Wait a brief moment
+time.sleep(0.1) # Wait a brief moment (to compensate for servo movement)
 playsound('./start.mp3') # Play the start sound
 print("START")
 

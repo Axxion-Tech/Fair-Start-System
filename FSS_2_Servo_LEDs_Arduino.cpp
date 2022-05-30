@@ -1,12 +1,12 @@
 #include <FastLED.h>
 #include<SoftwareSerial.h>
-#include <Servo.h>
+#include <VarSpeedServo.h>
 
 #define LED_PIN    8
 #define NUM_LEDS    25
 
-Servo l;
-Servo r;
+VarSpeedServo l;
+VarSpeedServo r;
 int bttx=0; // tx of bluetooth module is connected to pin 0 of arduino
 int btrx=1; // rx of bluetooth module is connected to pin 1 of arduino
 int lStartPosition = 180; // Left servo start position (angle)
@@ -81,8 +81,8 @@ void loop()
     }
     else if (command==48) { // When the command is utf-8 "0"
       Serial.println("Resetting");
-      l.write(lStartPosition); // Move servos closed
-      r.write(rStartPosition);
+      l.write(lStartPosition, 15); // Move servos closed
+      r.write(rStartPosition, 15);
       fill_solid( leds, NUM_LEDS, CRGB(255, 0, 0) ); // Turn all LEDs red
       FastLED.show();
       delay(100);

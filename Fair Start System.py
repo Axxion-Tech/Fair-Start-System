@@ -6,28 +6,35 @@ import time
 import random
 import tkinter as tk
 from tkinter import *
+from tkinter import messagebox
 from threading import Thread
 from playsound import playsound
 
 root= tk.Tk()
 root.title("Fair Start System")
+root.iconbitmap(os.path.dirname(__file__) + '/assets/short_logo.ico')
+
+top = Frame(root)
+top.pack(side=TOP, fill=BOTH, expand=True)
 
 bottom = Frame(root)
-bottom.pack(side=BOTTOM, fill=BOTH)
+bottom.pack(side=BOTTOM, fill=BOTH, expand=True)
 
-canvas1 = tk.Canvas(root, width = 400, height = 200, relief="raised")
-canvas1.pack()
+header = tk.Canvas(root, width = 600, height = 80, relief="raised", background="#C80000")
+header.pack(in_=top)
 
-label1 = tk.Label(root, text='Fair Start System')
-label1.config(font=('helvetica', 14))
-canvas1.create_window(200, 25, window=label1)
+body = tk.Canvas(root, width = 400, height = 200, relief="raised")
+body.pack()
 
-label2 = tk.Label(root, text='Enter Bluetooth Port:')
-label2.config(font=('helvetica', 10))
-canvas1.create_window(200, 100, window=label2)
+main_logo = PhotoImage(file = os.path.dirname(__file__) + '/assets/full_logo_small.png')
+header.create_image(300, 40, image = main_logo)
 
-entry1 = tk.Entry (root) 
-canvas1.create_window(200, 140, window=entry1)
+input_label = tk.Label(root, text='Enter Bluetooth Port:')
+input_label.config(font=('helvetica', 14))
+body.create_window(200, 100, window=input_label)
+
+input = tk.Entry(root, width=30, justify=CENTER) 
+body.create_window(200, 145, window=input)
 
 notification = tk.Label(root)
 notification.pack(pady=50)
@@ -37,9 +44,9 @@ start_sound = os.path.dirname(__file__) + '/start.mp3'
 
 def startRace():
 	try:
-		button1['state'] = "disable"
+		button1['state'] = "disable" # Disable start button
 		button1['bg'] = "grey"
-		port=entry1.get() # Read the port entered in the command line. The format will vary between Windows/Mac/Linux
+		port=input.get() # Read the port entered in the command line. The format will vary between Windows/Mac/Linux
 		notification.config(text = "Searching for FairStartSystem on {}...".format(port))
 		bluetooth=serial.Serial(port, 15200) # Initiate bluetooth connection with 15200 baud rate
 		notification.config(text = "Connected")
@@ -62,7 +69,7 @@ def startRace():
 		bluetooth.write(bytes("0",'utf-8')) # Send the arduino a command to close the gate
 		notification.config(text = "Done.")
 		time.sleep(5)
-		button1['bg'] = "green"
+		button1['bg'] = "green" # Restore start button
 		button1['state'] = 'normal'
 		return
 	except serial.SerialException:
@@ -73,22 +80,22 @@ def startRace():
 			tk.messagebox.showerror('Bluetooth Error', 'Could not find device on port {}'.format(port))
 		button1['bg'] = "green"
 		button1['state'] = 'normal'
-	except Exception:
+	except Exception as ex:
+		ex_value = sys.exc_info()
 		notification.config(text="")
-		tk.messagebox.showerror('Error', Exception)
+		tk.messagebox.showerror('Error', ex_value)
 		button1['bg'] = "green"
 		button1['state'] = 'normal'
 
-def startRaceThreaded():
+def startRaceThreaded(): # Real-time notification updates requires threading
 	global t
 	t = Thread(target=startRace)
 	t.start()
 
-	
-def openHelp():
+def openHelp(): # Show help page
     startfile(os.path.dirname(__file__) + '/help.html')
 
-def openAbout():
+def openAbout(): # Show about page
     startfile(os.path.dirname(__file__) + '/about.html')
 
 help_link = tk.Button(text='Help', command=openHelp, fg='blue', font=('helvetica', 9),  highlightthickness = 0, bd = 0, padx=100, pady=30)
@@ -97,7 +104,7 @@ help_link.pack(in_ = bottom, side = LEFT)
 about_link = tk.Button(text='About', command=openAbout, fg='blue', font=('helvetica', 9),  highlightthickness = 0, bd = 0, padx=100, pady=30)
 about_link.pack(in_ = bottom, side = RIGHT)
 
-button1 = tk.Button(text='Start Race', command=startRaceThreaded, bg='green', fg='white', font=('helvetica', 9, 'bold'))
-canvas1.create_window(200, 180, window=button1)
+button1 = tk.Button(text='Start Race', command=startRaceThreaded, bg='green', fg='white', font=('helvetica', 12, 'bold'), padx=10, pady=5)
+body.create_window(200, 200, window=button1)
 
 root.mainloop()

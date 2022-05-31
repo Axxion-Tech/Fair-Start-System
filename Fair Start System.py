@@ -12,7 +12,7 @@ from playsound import playsound
 
 root= tk.Tk()
 root.title("Fair Start System")
-root.iconbitmap(os.path.dirname(__file__) + '/assets/short_logo.ico')
+root.iconbitmap(os.path.dirname(__file__) + '/assets/images/short_logo.ico')
 
 top = Frame(root)
 top.pack(side=TOP, fill=BOTH, expand=True)
@@ -26,7 +26,7 @@ header.pack(in_=top)
 body = tk.Canvas(root, width = 400, height = 200, relief="raised")
 body.pack()
 
-main_logo = PhotoImage(file = os.path.dirname(__file__) + '/assets/full_logo_small.png')
+main_logo = PhotoImage(file = os.path.dirname(__file__) + '/assets/images/full_logo_small.png')
 header.create_image(300, 40, image = main_logo)
 
 input_label = tk.Label(root, text='Enter Bluetooth Port:')
@@ -39,8 +39,8 @@ body.create_window(200, 145, window=input)
 notification = tk.Label(root)
 notification.pack(pady=50)
 
-wait_sound = os.path.dirname(__file__) + '/wait.mp3'
-start_sound = os.path.dirname(__file__) + '/start.mp3'
+wait_sound = os.path.dirname(__file__) + '/assets/sound/wait.mp3'
+start_sound = os.path.dirname(__file__) + '/assets/sound/start.mp3'
 
 def startRace():
 	try:

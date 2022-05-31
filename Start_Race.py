@@ -86,10 +86,10 @@ def startRaceThreaded():
 
 	
 def openHelp():
-    startfile(os.path.dirname(__file__) + '/help.txt')
+    startfile(os.path.dirname(__file__) + '/help.html')
 
 def openAbout():
-    startfile(os.path.dirname(__file__) + '/about.txt')
+    startfile(os.path.dirname(__file__) + '/about.html')
 
 help_link = tk.Button(text='Help', command=openHelp, fg='blue', font=('helvetica', 9),  highlightthickness = 0, bd = 0, padx=100, pady=30)
 help_link.pack(in_ = bottom, side = LEFT)

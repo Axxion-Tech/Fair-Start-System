@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./assets/short_logo.ico">
+    <title>FSS Help</title>
+
+    <style>
+        * {
+            margin: 0;
+            font-family: 'Open Sans';
+            font-style: normal;
+            font-weight: 400;
+        }
+        body {
+            height: 100vh;
+            width: 100vw;
+            overflow-x: hidden;
+        }
+        header {
+            background-color: #C80000;
+            height: 120px;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            margin: 0 auto;
+        }
+        main {
+            margin: 0 auto;
+            padding: 10px 0;
+            min-height: calc(100% - 90px);
+            width: 80%;
+            background-color: #e9e9e9;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        p {
+            text-align: left;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 200px;
+        }
+        h2, h3 {
+            text-align: center;
+            padding: 15px 0;
+        }
+        h4 {
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+        ul {
+            width: 250px;
+            margin: 0 auto;
+        }
+        .collapsed, .expanded{
+            position: relative;
+            height: 20px;
+            width: 80%;
+            padding: 20px 50px;
+            margin-bottom: 20px;
+            background-color: rgb(210, 210, 210);
+        }
+        .collapsed::after{
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            content: '';
+            width: 0; 
+            height: 0; 
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            border-left: 15px solid #313131;
+            border-right: 10px solid transparent;
+        }
+        .expanded {
+            height: auto;
+        }
+        .expanded::after{
+            position: absolute;
+            right: 30px;
+            top: 20px;
+            content: '';
+            width: 0; 
+            height: 0; 
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 15px solid #313131;
+        }
+        .hidden {
+            display: none;
+        }
+        .show {
+            display: flex;
+            padding-top: 20px;
+        }
+    </style>
+   
+</head>
+<body>
+    <header>
+        <img src="./assets/full_logo.png" alt="Fair Start System" width="800px">
+    </header>
+    <main>
+        <h2>
+            Initial Setup
+        </h2>
+        <p>
+            Power on the Fair Start System by providing 5 volts to the Arduino, servos, and LEDs. A 7 amp (or higher) power supply is needed to guarantee reliable performance across all the components. Once powered on, the indicator on the HC-06 module should be blinking. In your system's bluetooth pairing menu, find the HC-06 and link it to your computer. If a passcode is requested, the default is either 0000 or 1234.
+        </p>
+        <h2>
+            Operating the System
+        </h2>
+        <p>
+            The Fair Start System is highly automated and designed to work with a single button press. However, the interface requires entering the outgoing serial port that your computer is using to communicate with the HC-06. This feature ensures the application is cross-compatible between operating systems, as well as allows the serial port to change when needed. Once the correct port is identified and entered, press the "Start Race" button to begin race. A countdown of three seconds with corresponding tones and LED patterns will play. Then, after a brief (less than 5 seconds) random amount of time - the box will open, a start tone will sound, and the LEDs will turn green. Finally, 10 seconds later, the door will slowly close and the LEDs will return to red. You are now ready to start the next heat!
+        </p>
+        <h2>
+            Finding the Correct Serial Port
+        </h2>
+        <div class="tutorial collapsed">
+            <h4>Windows</h4>
+            <div class="hidden">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis ex lectus, nec dignissim nunc fringilla et. Nullam sodales leo nulla, vel dapibus mi fermentum non. Morbi turpis justo, pulvinar ut sapien non, efficitur lobortis justo. Maecenas nec aliquet felis, sed sollicitudin magna. Vestibulum in elit eros. Proin massa est, lobortis eget sodales varius, accumsan non turpis. Maecenas nec dictum nulla. Praesent ac ultrices elit, a ornare purus. Pellentesque blandit quam at odio rutrum lacinia. Ut a felis vestibulum, fermentum justo nec, mollis sem. Pellentesque porta justo vel elit consectetur convallis. Aliquam pretium volutpat odio vel gravida. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi dapibus est ac risus consectetur aliquam. Curabitur at rhoncus dolor, sed laoreet tellus.
+            </div>
+        </div>
+        <div class="tutorial collapsed">
+            <h4>Mac</h4>
+            <div class="hidden">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis ex lectus, nec dignissim nunc fringilla et. Nullam sodales leo nulla, vel dapibus mi fermentum non. Morbi turpis justo, pulvinar ut sapien non, efficitur lobortis justo. Maecenas nec aliquet felis, sed sollicitudin magna. Vestibulum in elit eros. Proin massa est, lobortis eget sodales varius, accumsan non turpis. Maecenas nec dictum nulla. Praesent ac ultrices elit, a ornare purus. Pellentesque blandit quam at odio rutrum lacinia. Ut a felis vestibulum, fermentum justo nec, mollis sem. Pellentesque porta justo vel elit consectetur convallis. Aliquam pretium volutpat odio vel gravida. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi dapibus est ac risus consectetur aliquam. Curabitur at rhoncus dolor, sed laoreet tellus.
+            </div>
+        </div>
+        <div class="tutorial collapsed">
+            <h4>Linux</h4>
+            <div class="hidden">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis ex lectus, nec dignissim nunc fringilla et. Nullam sodales leo nulla, vel dapibus mi fermentum non. Morbi turpis justo, pulvinar ut sapien non, efficitur lobortis justo. Maecenas nec aliquet felis, sed sollicitudin magna. Vestibulum in elit eros. Proin massa est, lobortis eget sodales varius, accumsan non turpis. Maecenas nec dictum nulla. Praesent ac ultrices elit, a ornare purus. Pellentesque blandit quam at odio rutrum lacinia. Ut a felis vestibulum, fermentum justo nec, mollis sem. Pellentesque porta justo vel elit consectetur convallis. Aliquam pretium volutpat odio vel gravida. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi dapibus est ac risus consectetur aliquam. Curabitur at rhoncus dolor, sed laoreet tellus.
+            </div>
+        </div>
+        <img src="./assets/axxion_logo.png" alt="Axxion Logo" width="150px" style="margin-top: 50px">
+        <h3>
+            Designed and developed by Axxion
+        </h3>
+    </main>
+
+    <script>
+        const toggleDropdown = (element) => {
+            if (element.classList.contains("collapsed")) {
+                let content = element.querySelector(".hidden")
+                element.classList.remove("collapsed")
+                element.classList.add("expanded")
+                content.classList.remove("hidden")
+                content.classList.add("show")
+            } else {
+                let content = element.querySelector(".show")
+                element.classList.remove("expanded")
+                element.classList.add("collapsed")
+                content.classList.remove("show")
+                content.classList.add("hidden")
+            }
+        }
+
+        let tutorials = document.querySelectorAll(".tutorial")
+        console.log(tutorials)
+        tutorials.forEach(tutorial => tutorial.addEventListener('click', () => toggleDropdown(tutorial)))
+    </script>
+</body>
+</html>

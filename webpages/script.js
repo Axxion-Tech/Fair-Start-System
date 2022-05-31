@@ -15,5 +15,4 @@ const toggleDropdown = (element) => {
 }
 
 let tutorials = document.querySelectorAll(".tutorial")
-console.log(tutorials)
 tutorials.forEach(tutorial => tutorial.addEventListener('click', () => toggleDropdown(tutorial)))

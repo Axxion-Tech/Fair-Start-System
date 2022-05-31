@@ -47,7 +47,7 @@ def startRace():
 		button1['state'] = "disable" # Disable start button
 		button1['bg'] = "grey"
 		port=input.get() # Read the port entered in the command line. The format will vary between Windows/Mac/Linux
-		notification.config(text = "Searching for FairStartSystem on {}...".format(port))
+		notification.config(text = "Searching for Fair Start System on {}...".format(port))
 		bluetooth=serial.Serial(port, 15200) # Initiate bluetooth connection with 15200 baud rate
 		notification.config(text = "Connected")
 
@@ -75,15 +75,15 @@ def startRace():
 	except serial.SerialException:
 		notification.config(text="")
 		if not port:
-			tk.messagebox.showerror('Input Error', 'Please enter a port in the input.')
+			messagebox.showerror('Input Error', 'Please enter a port in the input.')
 		else:
-			tk.messagebox.showerror('Bluetooth Error', 'Could not find device on port {}'.format(port))
+			messagebox.showerror('Bluetooth Error', 'Could not find device on port {}'.format(port))
 		button1['bg'] = "green"
 		button1['state'] = 'normal'
 	except Exception as ex:
 		ex_value = sys.exc_info()
 		notification.config(text="")
-		tk.messagebox.showerror('Error', ex_value)
+		messagebox.showerror('Error', ex_value)
 		button1['bg'] = "green"
 		button1['state'] = 'normal'
 
@@ -93,10 +93,10 @@ def startRaceThreaded(): # Real-time notification updates requires threading
 	t.start()
 
 def openHelp(): # Show help page
-    startfile(os.path.dirname(__file__) + '/help.html')
+    startfile(os.path.dirname(__file__) + '/webpages/help.html')
 
 def openAbout(): # Show about page
-    startfile(os.path.dirname(__file__) + '/about.html')
+    startfile(os.path.dirname(__file__) + '/webpages/about.html')
 
 help_link = tk.Button(text='Help', command=openHelp, fg='blue', font=('helvetica', 9),  highlightthickness = 0, bd = 0, padx=100, pady=30)
 help_link.pack(in_ = bottom, side = LEFT)

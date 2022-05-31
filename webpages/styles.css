@@ -36,18 +36,19 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 200px;
+    padding: 10px 70px;
+    width: 70%;
 }
 h2, h3 {
     text-align: center;
-    padding: 15px 0;
+    padding: 15px 40px;
 }
 h4 {
     font-weight: 500;
     font-size: 1.1em;
 }
 ul {
-    width: 250px;
+    width: 260px;
     margin: 0 auto;
 }
 .collapsed, .expanded{
@@ -89,5 +90,13 @@ ul {
 }
 .show {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding-top: 20px;
+}
+.show p {
+    margin: 20px 0 0 0;
+    padding: 25px 0;
+    width: 70%;
 }

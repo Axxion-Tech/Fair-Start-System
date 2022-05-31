@@ -17,13 +17,13 @@
             Initial Setup
         </h2>
         <p>
-            Power on the Fair Start System by providing 5 volts to the Arduino, servos, and LEDs. A 7 amp (or higher) power supply is needed to guarantee reliable performance across all the components. Once powered on, the indicator on the HC-06 module should be blinking. In your system's bluetooth pairing menu, find the HC-06 and link it to your computer. If a passcode is requested, the default is either 0000 or 1234.
+            Power on the Fair Start System by providing 5 volts to the Arduino, servos, and LEDs. A 7 amp (or higher) power supply is needed to guarantee reliable performance across all the components. Once powered on, an indicator on the HC-06 bluetooth module should be blinking. In your computer's bluetooth pairing menu, find the HC-06 and link it to your computer. If a passcode is requested, the default is either 0000 or 1234.
         </p>
         <h2>
             Operating the System
         </h2>
         <p>
-            The Fair Start System is highly automated and designed to work with a single button press. However, the interface requires entering the outgoing serial port that your computer is using to communicate with the HC-06. This feature ensures the application is cross-compatible between operating systems, as well as allows the serial port to change when needed. Once the correct port is identified and entered, press the "Start Race" button to begin race. A countdown of three seconds with corresponding tones and LED patterns will play. Then, after a brief (less than 5 seconds) random amount of time - the box will open, a start tone will sound, and the LEDs will turn green. Finally, 10 seconds later, the door will slowly close and the LEDs will return to red. You are now ready to start the next heat!
+            The Fair Start System is highly automated and designed to work with a single button press. However, the interface requires entering the outgoing serial port that your computer uses to communicate with the HC-06. This feature ensures the application is cross-compatible between operating systems, as well as allows the serial port to change when needed. Once the correct port is identified and entered, press the "Start Race" button to begin race. A countdown of three seconds with corresponding tones and LED patterns will play. Then, after a brief (less than 5 seconds) random amount of time - the box will open, a start tone will sound, and the LEDs will turn green. Finally, 10 seconds later, the door will slowly close and the LEDs will return to red. You are now ready to start the next heat!
         </p>
         <h2>
             Finding the Correct Serial Port
@@ -31,24 +31,35 @@
         <div class="tutorial collapsed">
             <h4>Windows</h4>
             <div class="hidden">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis ex lectus, nec dignissim nunc fringilla et. Nullam sodales leo nulla, vel dapibus mi fermentum non. Morbi turpis justo, pulvinar ut sapien non, efficitur lobortis justo. Maecenas nec aliquet felis, sed sollicitudin magna. Vestibulum in elit eros. Proin massa est, lobortis eget sodales varius, accumsan non turpis. Maecenas nec dictum nulla. Praesent ac ultrices elit, a ornare purus. Pellentesque blandit quam at odio rutrum lacinia. Ut a felis vestibulum, fermentum justo nec, mollis sem. Pellentesque porta justo vel elit consectetur convallis. Aliquam pretium volutpat odio vel gravida. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi dapibus est ac risus consectetur aliquam. Curabitur at rhoncus dolor, sed laoreet tellus.
+                <p>Find the Bluetooth icon in your taskbar (it may be hidden in the arrow ^) and right click it. Then, select "Open Settings".</p>
+                <img src="../assets/images/windows_1.png" alt="Bluetooth Taskbar">
+                <br>
+                <p>Scroll down until you find "More Bluetooth settings" and click on it.</p>
+                <img src="../assets/images/windows_2.png" alt="Windows Bluetooth Settings">
+                <br>
+                <p>In the new window, click the "COM Ports" tab. Locate the HC-06 connected to the Fair Start System. The "Outgoing" COM port is what you need to enter into the application.</p>
+                <img src="../assets/images/windows_3.png" alt="Windows Bluetooth Settings Dialog">
             </div>
         </div>
         <div class="tutorial collapsed">
             <h4>Mac</h4>
             <div class="hidden">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis ex lectus, nec dignissim nunc fringilla et. Nullam sodales leo nulla, vel dapibus mi fermentum non. Morbi turpis justo, pulvinar ut sapien non, efficitur lobortis justo. Maecenas nec aliquet felis, sed sollicitudin magna. Vestibulum in elit eros. Proin massa est, lobortis eget sodales varius, accumsan non turpis. Maecenas nec dictum nulla. Praesent ac ultrices elit, a ornare purus. Pellentesque blandit quam at odio rutrum lacinia. Ut a felis vestibulum, fermentum justo nec, mollis sem. Pellentesque porta justo vel elit consectetur convallis. Aliquam pretium volutpat odio vel gravida. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi dapibus est ac risus consectetur aliquam. Curabitur at rhoncus dolor, sed laoreet tellus.
+                <p>Navigate to your Bluetooth device list. Select the HC-06 connected to the Fair Start System, then click "Edit Serial Ports".</p>
+                <img src="../assets/images/mac_1.png" alt="Bluetooth Taskbar">
+                <br>
+                <p>Note the port in the "Device Service" column. This should be the one you enter into the application.</p>
+                <img src="../assets/images/mac_2.png" alt="Windows Bluetooth Settings">
             </div>
         </div>
         <div class="tutorial collapsed">
             <h4>Linux</h4>
             <div class="hidden">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque iaculis ex lectus, nec dignissim nunc fringilla et. Nullam sodales leo nulla, vel dapibus mi fermentum non. Morbi turpis justo, pulvinar ut sapien non, efficitur lobortis justo. Maecenas nec aliquet felis, sed sollicitudin magna. Vestibulum in elit eros. Proin massa est, lobortis eget sodales varius, accumsan non turpis. Maecenas nec dictum nulla. Praesent ac ultrices elit, a ornare purus. Pellentesque blandit quam at odio rutrum lacinia. Ut a felis vestibulum, fermentum justo nec, mollis sem. Pellentesque porta justo vel elit consectetur convallis. Aliquam pretium volutpat odio vel gravida. Nulla facilisi. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi dapibus est ac risus consectetur aliquam. Curabitur at rhoncus dolor, sed laoreet tellus.
+                Coming soon!
             </div>
         </div>
         <img src="../assets/images/axxion_logo.png" alt="Axxion Logo" width="150px" style="margin-top: 50px">
         <h3>
-            Designed and developed by Axxion
+            Designed and developed by Axxion Technologies
         </h3>
     </main>
     <script src="./script.js"></script>

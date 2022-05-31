@@ -8,7 +8,7 @@ Download and extract the zip file to your chosen directory. Double-click `Fair S
 
 ## Requirements to Run Application
 
-- [python3](https://www.python.org/downloads/)
+- [python 3](https://www.python.org/downloads/)
 - [playsound 1.2.2](https://pypi.org/project/playsound/1.2.2/) (`pip install playsound==1.2.2`)
 
 ## Requirements to Flash Arduino

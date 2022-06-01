@@ -1,0 +1,36 @@
+--------------------------------------------
+Servo and Arduino Box Left / Servo Box Right (PLA+)
+
+### Slicer Settings ###
+Layer Height: 0.3
+Line Width: 0.45
+Wall Line Count: 3
+Infill Density: 65%
+Infill Pattern: Cubic
+Print Speed: 70 mm/s
+Enable Retraction: Yes
+Generate Support: Yes
+Support Structure: Tree
+Support Placement: Everywhere
+
+### Notes ###
+Some of the smaller holes and overhangs shouldn't need supports. Use good judgement and place support blockers
+where you think your printer should be able to handle it. Use the right temperatures and fan speed for the 
+material you choose to print in. Finally, pay close attention to the support structure and density. It can 
+be a challenge ripping out the supports after printing if you allow too much material.
+
+----------------------------------------------
+Right Servo Cover / Left Arduino Cover / Left Servo Cover / Panel Side Rails (PLA+)
+
+### Slicer Settings ###
+Layer Height: 0.2
+Line Width: 0.45
+Wall Line Count: 3
+Infill Density: 65%
+Infill Pattern: Cubic
+Print Speed: 60 mm/s
+Enable Retraction: Yes
+Generate Support: No
+
+### Notes ###
+Print the L-shaped covers standing up on the short side to avoid supports. Two side rails are required, but they are the exact same model for the left and right, so just duplicate it. Depending on printer calibration, the covers may need to be scaled or modified to fit the corresponding slots perfectly.

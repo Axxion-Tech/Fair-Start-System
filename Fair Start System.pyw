@@ -50,6 +50,7 @@ def startRace():
 		notification.config(text = "Searching for Fair Start System on {}...".format(port))
 		bluetooth=serial.Serial(port, 15200) # Initiate bluetooth connection with 15200 baud rate
 		notification.config(text = "Connected")
+		time.sleep(1)
 
 		random_num = random.random() * 3.5
 		notification.config(text = "This countdown delay: {} seconds".format(round(random_num, 2))) # Show the current randomized countdown

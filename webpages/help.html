@@ -32,29 +32,42 @@
             <h4>Windows</h4>
             <div class="hidden">
                 <p>Find the Bluetooth icon in your taskbar (it may be hidden in the arrow ^) and right click it. Then, select "Open Settings".</p>
-                <img src="../assets/images/windows_1.png" alt="Bluetooth Taskbar">
+                <img src="../assets/images/windows_1.jpg" alt="Bluetooth Taskbar">
                 <br>
                 <p>Scroll down until you find "More Bluetooth settings" and click on it.</p>
-                <img src="../assets/images/windows_2.png" alt="Windows Bluetooth Settings">
+                <img src="../assets/images/windows_2.jpg" alt="Windows Bluetooth Settings">
                 <br>
-                <p>In the new window, click the "COM Ports" tab. Locate the HC-06 connected to the Fair Start System. The "Outgoing" COM port is what you need to enter into the application.</p>
-                <img src="../assets/images/windows_3.png" alt="Windows Bluetooth Settings Dialog">
+                <p>In the new window, click the "COM Ports" tab. Locate the HC-06 connected to the Fair Start System.</p>
+                <img src="../assets/images/windows_3.jpg" alt="Windows Bluetooth Settings Dialog">
+                <br>
+                <p>Enter the "Outgoing" COM port into the application.</p>
+                <img src="../assets/images/windows_4.jpg" alt="Windows FSS Input">
             </div>
         </div>
         <div class="tutorial collapsed">
             <h4>Mac</h4>
             <div class="hidden">
                 <p>Navigate to your Bluetooth device list. Select the HC-06 connected to the Fair Start System, then click "Edit Serial Ports".</p>
-                <img src="../assets/images/mac_1.png" alt="Bluetooth Taskbar">
+                <img src="../assets/images/mac_1.jpg" alt="Mac Bluetooth Settings">
                 <br>
-                <p>Note the port in the "Device Service" column. This should be the one you enter into the application.</p>
-                <img src="../assets/images/mac_2.png" alt="Windows Bluetooth Settings">
+                <p>Note the port in the "Device Service" column.</p>
+                <img src="../assets/images/mac_2.jpg" alt="Advanced Mac Bluetooth">
+                <br>
+                <p>Enter the COM port into the application.</p>
+                <img src="../assets/images/mac_3.jpg" alt="Mac FSS Input">
             </div>
         </div>
         <div class="tutorial collapsed">
             <h4>Linux</h4>
             <div class="hidden">
-                Coming soon!
+                <p>Find the HC-06 connected to the Fair Start System in your settings. Copy the address listed.</p>
+                <img src="../assets/images/linux_1.jpg" alt="Linux Bluetooth Settings">
+                <br>
+                <p>Open a new terminal and bind the device to an open communications port with: <code>sudo rfcomm bind 0 &#x3c;bluetooth_address&#x3e;</code> You may need to specify a different rfcomm port number if 0 is taken.</p>
+                <img src="../assets/images/linux_2.jpg" alt="Linux Terminal">
+                <br>
+                <p>Enter "/dev/rfcomm0" (or the correct rfcomm port) in the Fair Start System input.</p>
+                <img src="../assets/images/linux_3.jpg" alt="Linux FSS Input">
             </div>
         </div>
         <img src="../assets/images/axxion_logo.png" alt="Axxion Logo" width="150px" style="margin-top: 50px">

@@ -1,7 +1,6 @@
 import serial
-import sys
-import os
-from os import startfile
+import os, sys, subprocess
+from platform import system
 import time
 import random
 import tkinter as tk
@@ -10,9 +9,29 @@ from tkinter import messagebox
 from threading import Thread
 from playsound import playsound
 
+def open_file(filename):
+    if sys.platform == "win32":
+        os.startfile(filename)
+    else:
+        opener = "open" if sys.platform == "darwin" else "xdg-open"
+        subprocess.call([opener, filename])
+
 root= tk.Tk()
+
+platformD = system()
+if platformD == 'Darwin':
+
+    root.iconbitmap(os.path.dirname(__file__) + '/assets/images/short_logo.icns')
+
+elif platformD == 'Windows':
+
+    root.iconbitmap(os.path.dirname(__file__) + '/assets/images/short_logo.ico')
+
+else:
+
+    root.iconbitmap("@" + os.path.dirname(__file__) + '/assets/images/short_logo.xbm')
+
 root.title("Fair Start System")
-root.iconbitmap(os.path.dirname(__file__) + '/assets/images/short_logo.ico')
 
 top = Frame(root)
 top.pack(side=TOP, fill=BOTH, expand=True)
@@ -94,10 +113,10 @@ def startRaceThreaded(): # Real-time notification updates requires threading
 	t.start()
 
 def openHelp(): # Show help page
-    startfile(os.path.dirname(__file__) + '/webpages/help.html')
+    open_file(os.path.dirname(__file__) + '/webpages/help.html')
 
 def openAbout(): # Show about page
-    startfile(os.path.dirname(__file__) + '/webpages/about.html')
+    open_file(os.path.dirname(__file__) + '/webpages/about.html')
 
 help_link = tk.Button(text='Help', command=openHelp, fg='blue', font=('helvetica', 9),  highlightthickness = 0, bd = 0, padx=100, pady=30)
 help_link.pack(in_ = bottom, side = LEFT)

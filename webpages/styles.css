@@ -20,6 +20,13 @@ header {
 img {
     margin: 0 auto;
 }
+code {
+    background-color: #313131;
+    font-family: monospace;
+    color: white;
+    padding: 11px 9px;
+    margin: 2px;
+}
 main {
     margin: 0 auto;
     padding: 10px 0;
@@ -34,6 +41,7 @@ main {
 p {
     text-align: left;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding: 10px 70px;
@@ -99,4 +107,5 @@ ul {
     margin: 20px 0 0 0;
     padding: 25px 0;
     width: 70%;
+    flex-direction: column;
 }

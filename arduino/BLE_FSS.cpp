@@ -1,41 +1,57 @@
 #include <FastLED.h>
-#include <SoftwareSerial.h>
 #include <VarSpeedServo.h>
 
-#define LED_PIN    8
-#define NUM_LEDS    25
+#define LED_PIN 8
+#define NUM_LEDS 25
 
 VarSpeedServo l;
 VarSpeedServo r;
-int bttx=0; // tx of bluetooth module is connected to pin 0 of arduino
-int btrx=1; // rx of bluetooth module is connected to pin 1 of arduino
 int lStartPosition = 180; // Left servo start position (angle)
 int lEndPosition = 90; // Left servo end position (angle)
 int rStartPosition = 0; // Right servo start position (angle)
 int rEndPosition = 90; // Right servo end position (angle)
+uint8_t gHue = 0; // Starting hue value
 
-SoftwareSerial bluetooth(bttx,btrx); // Setup bluetooth
 CRGB leds[NUM_LEDS]; // Setup LEDs
 
+void rainbow_wave(uint8_t thisSpeed, uint8_t deltaHue) {      // The fill_rainbow call doesn't support brightness levels.
+  uint8_t thisHue = beatsin8(thisSpeed,0,255);                // A simple rainbow wave.
+  fill_rainbow(leds, NUM_LEDS, thisHue, deltaHue);            // Use FastLED's fill_rainbow routine.
+}
 void setup()
 {
   FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS); // Arrange LED Strip
   fill_solid( leds, NUM_LEDS, CRGB(255, 0, 0) ); // Set all LEDs to red
   FastLED.show();
-  l.attach(10); // Left servo is connected to pin 10 of arduino
+  l.attach(3); // Left servo is connected to pin 10 of arduino
   l.write(lStartPosition); // Set left inital servo position to 90
-  r.attach(9); // Right servo is connected to pin 10 of arduino
+  r.attach(2); // Right servo is connected to pin 10 of arduino
   r.write(rStartPosition); // Set left inital servo position to 180
-  Serial.begin(115200); // Begin serial at 115200 baud rate
-  bluetooth.begin(115200); // Begin bluetooth at 115200 baud rate
+  Serial.begin(9600); // Begin serial at 9600 baud rate
 }
 void loop()
 {
-  if(bluetooth.available()>0) // If bluetooth module is transmitting data
+  if(Serial.available()>0) // If bluetooth module is transmitting data
   {
-    int command=bluetooth.read(); // Store the command in a variable
-    Serial.println(command); // Print command out
-    if(command==50){ // When the command is utf-8 "2"
+    int command = Serial.read(); // Store the command in a variable
+    Serial.println("Received command: " + String(command)); // Print command out
+    if (command==48) { // When the command is utf-8 "0"
+      Serial.println("Resetting");
+      r.write(rStartPosition, 20);
+      l.write(lStartPosition, 20); // Move servos closed
+      fill_solid( leds, NUM_LEDS, CRGB(255, 0, 0) ); // Turn all LEDs red
+      FastLED.show();
+      delay(100);
+    }
+    else if (command==49){ // When the command is utf-8 "1"
+      Serial.println("Firing");
+      l.write(lEndPosition); // Move servos open
+      r.write(rEndPosition);
+      fill_solid( leds, NUM_LEDS, CRGB(0, 255, 0) ); // Turn all LED's green
+      FastLED.show();
+      delay(100);
+    }
+    else if(command==50){ // When the command is utf-8 "2"
       Serial.println("Countdown");
       fill_solid( leds, NUM_LEDS, CRGB(0, 0, 0) ); // Turn off all LEDs
       FastLED.show();
@@ -71,19 +87,15 @@ void loop()
       leds[14] = CRGB(255, 140, 0);
       FastLED.show();
     }
-    if(command==49){ // When the command is utf-8 "1"
-      Serial.println("Firing");
-      l.write(lEndPosition); // Move servos open
-      r.write(rEndPosition);
-      fill_solid( leds, NUM_LEDS, CRGB(0, 255, 0) ); // Turn all LED's green
+    else if (command==51){ // When the command is utf-8 "3"
+      Serial.println("Red LEDs");
+      fill_solid( leds, NUM_LEDS, CRGB(255, 0, 0) ); // Set all LEDs to red
       FastLED.show();
       delay(100);
     }
-    else if (command==48) { // When the command is utf-8 "0"
-      Serial.println("Resetting");
-      l.write(lStartPosition, 15); // Move servos closed
-      r.write(rStartPosition, 15);
-      fill_solid( leds, NUM_LEDS, CRGB(255, 0, 0) ); // Turn all LEDs red
+    else if (command==52){ // When the command is utf-8 "4"
+      Serial.println("Rainbow Wave LEDs");
+      fill_rainbow( leds, NUM_LEDS, gHue, 7);
       FastLED.show();
       delay(100);
     }

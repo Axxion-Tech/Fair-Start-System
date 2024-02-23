@@ -61,13 +61,33 @@ notification.pack(pady=50)
 wait_sound = os.path.dirname(__file__) + '/assets/sound/wait.mp3'
 start_sound = os.path.dirname(__file__) + '/assets/sound/start.mp3'
 
+def rainbowMode():
+    try:
+        port=input.get() # Read the port entered in the command line. The format will vary between Windows/Mac/Linux
+        notification.config(text = "Searching for Fair Start System on {}...".format(port))
+        bluetooth=serial.Serial(port, 9600) # Initiate bluetooth connection with 9600 baud rate
+        notification.config(text = "Connected")
+        bluetooth.flushInput() # Pulse check bluetooth
+        bluetooth.write(bytes("3",'utf-8')) # Send the arduino a command to show countdown LEDs
+        return
+    except serial.SerialException:
+        notification.config(text="")
+        if not port:
+            messagebox.showerror('Input Error', 'Please enter a port in the input.')
+        else:
+            messagebox.showerror('Bluetooth Error', 'Could not find device on port {}'.format(port))
+    except Exception:
+        ex_value = sys.exc_info()
+        notification.config(text="")
+        messagebox.showerror('Error', ex_value)
+
 def startRace():
     try:
         button1['state'] = "disable" # Disable start button
         button1['bg'] = "grey"
         port=input.get() # Read the port entered in the command line. The format will vary between Windows/Mac/Linux
         notification.config(text = "Searching for Fair Start System on {}...".format(port))
-        bluetooth=serial.Serial(port, 15200) # Initiate bluetooth connection with 15200 baud rate
+        bluetooth=serial.Serial(port, 9600) # Initiate bluetooth connection with 9600 baud rate
         notification.config(text = "Connected")
         time.sleep(1)
 
@@ -125,6 +145,8 @@ about_link = tk.Button(text='About', command=openAbout, fg='blue', font=('helvet
 about_link.pack(in_ = bottom, side = RIGHT)
 
 button1 = tk.Button(text='Start Race', command=startRaceThreaded, bg='green', fg='white', font=('helvetica', 12, 'bold'), padx=10, pady=5)
+button2 = tk.Button(text='Rainbow', command=startRaceThreaded, bg='white', fg='green', font=('helvetica', 12, 'bold'), padx=10, pady=5)
 body.create_window(200, 200, window=button1)
+body.create_window(200, 220, window=button2)
 
 root.mainloop()
